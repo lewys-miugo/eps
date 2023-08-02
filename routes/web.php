@@ -2,7 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Livewire\HomeComponent;
+
+use App\Http\Livewire\SuperAdmin\SuperAdminDashboardComponent;
+
+use App\Http\Livewire\Employee\EmployeeDashboardComponent;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +28,22 @@ use App\Http\Livewire\HomeComponent;
 // });
 Route::get('/',HomeComponent::class)->name('home.index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::middleware(['auth'])->group(function(){
+    Route::get('/user/dashboard',EmployeeDashboardComponent::class)->name('employee.dashboard');
 });
+
+Route::middleware(['auth','authsuperadmin'])->group(function(){
+    Route::get('/superadmin/dashboard',SuperAdminDashboardComponent::class)->name('superadmin.dashboard');
+});
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__.'/auth.php';

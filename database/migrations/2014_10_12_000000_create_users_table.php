@@ -14,13 +14,30 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+            // $table->string('last_name');
             $table->id();
-            $table->string('name');
+            $table->string('full_name');
+            $table->string('national_id')->unique()->nullable();
+            $table->string('employee_no')->unique()->nullable();
+            $table->unsignedInteger('age')->nullable();
+            $table->enum('gender', ['male', 'female', 'other'])->nullable();
+            $table->string('campus')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->bigInteger('campus_id')->unsigned()->nullable();
+            $table->string('department')->nullable();
+            $table->bigInteger('department_id')->unsigned()->nullable();
+            $table->date('start_date')->nullable();
+            $table->boolean('suspended')->default(false);
+            $table->string('job_grade')->nullable();
+            $table->decimal('salary',10,2)->nullable();
+            $table->boolean('fired')->default(false)->nullable();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('utype')->default('USR');
             $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade');
         });
     }
 
