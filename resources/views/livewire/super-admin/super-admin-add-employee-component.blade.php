@@ -8,7 +8,7 @@
     </div>
 
     <h1 class="text-center">Adding New Employee</h1>
-    <h1 class="text-center underline my-4"><a href="{{route('all.employees')}}">All Products</a></h1>
+    <h1 class="text-center underline my-4"><a href="{{route('all.employees')}}">Go to all Employees</a></h1>
 
 
     <div class="mx-8">
@@ -20,31 +20,61 @@
                 <span class="font-semibold">Success! | {{Session::get('message')}}</span>
             </div>
         @endif
-        <form class="max-w-md mx-auto" wire:submit.prevent="addProduct">
+
+        <form class="max-w-md mx-auto" wire:submit.prevent="addUser">
             <!-- NAMe -->
             <div class="mb-4">
-                <label for="name" class="block mb-1">Name</label>
-                <input id="name" type="text" name="name" class="w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter name of artPiece" wire:model="name" wire:keyup="generateSlug()">
-                @error('name')
+                <label for="full_name" class="block mb-1">Full Name</label>
+                <input id="full_name" type="text" name="full_name" class="w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter Full Name of Employee" wire:model="full_name">
+                @error('full_name')
+                    <p class="text-white bg-red-300">{{$message}}</p>
+                @enderror
+            </div>
+
+            <!-- Utype -->
+            <div class="mb-4">
+                <label for="utype" class="block mb-1">Utype</label>
+                <input id="utype" type="text" name="utype" class="w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter user type" wire:model="utype">
+                @error('utype')
+                    <p class="text-white bg-red-300">{{$message}}</p>
+                @enderror
+            </div>
+
+            <!-- Phone Number -->
+            <div class="mb-4">
+                <label for="phone_number" class="block mb-1">phone number</label>
+                <input id="phone_number" type="text" name="phone_number" class="w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter Phone number of employee" wire:model="phone_number">
+                @error('phone_number')
                     <p class="text-white bg-red-300">{{$message}}</p>
                 @enderror
             </div>
 
             <!-- Employee number -->
-
             <div class="mb-4">
-                <label for="employee_no" class="block mb-1">employee number</label>
-                <input id="employee_no" type="text" name="employee_no" class="w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" employee_number" wire:model="employee_no">
+                <label for="employee_no" class="block mb-1">Employee Number</label>
+
+                <input type="text" id="employee_no" class="w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" wire:model="employee_no" readonly>                
                 @error('employee_no')
                     <p class="text-white bg-red-300">{{$message}}</p>
                 @enderror
             </div>
 
-            <!-- Short description -->
+            <!-- Email -->
+
             <div class="mb-4">
-                <label for="short_description" class="block mb-1">Short Description</label>
-                <textarea name="short_description" id="" cols="50" rows="5" placeholder="Enter short Description" wire:model="short_description"></textarea>
-                @error('short_description')
+                <label for="email" class="block mb-1">email</label>
+                
+                <input type="email" id="email" class="w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" wire:model="email" placeholder="Generated email will appear here">
+                @error('email')
+                    <p class="text-white bg-red-300">{{$message}}</p>
+                @enderror
+            </div>
+
+            <!-- Start date -->
+            <div class="mb-4">
+                <label for="start_date" class="block mb-1">Start Date</label>
+                <input id="start_date" type="date" name="start_date" class="w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" start_date" wire:model="start_date">
+                @error('start_date')
                     <p class="text-white bg-red-300">{{$message}}</p>
                 @enderror
             </div>
@@ -62,12 +92,13 @@
                 @enderror
             </div>
 
+            <!-- Campus -->
             <div class="mb-4">
                 <label for="campus_id" class="block mb-1">select campus</label>
                 <select name="campus_id" id="" wire:model="campus_id">
                     <option value="">Choose campus</option>
                     @foreach($campuses as $campus)
-                        <option value="{{$campus->id}}">{{$campus->name}}</option>
+                        <option value="{{$campus->id}}">{{$campus->campus_name}}</option>
                     @endforeach
                 </select>
                 @error('campus_id')

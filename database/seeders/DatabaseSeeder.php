@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
 
         $faker = Faker::create();
 
-        \App\Models\User::factory(3000)->create();
+        // \App\Models\User::factory(3000)->create();
 
         \App\Models\User::factory(1)->create([
             'full_name' => 'Lewys Miugo',
