@@ -6,6 +6,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\HomeComponent;
 
 use App\Http\Livewire\SuperAdmin\SuperAdminDashboardComponent;
+use App\Http\Livewire\SuperAdmin\SuperAdminEmployeesComponent;
+use App\Http\Livewire\SuperAdmin\SuperAdminAddEmployeeComponent;
+use App\Http\Livewire\SuperAdmin\SuperAdminEditEmployeeComponent;
+use App\Http\Livewire\SuperAdmin\SuperAdminFiredEmployeesComponent;
+use App\Http\Livewire\SuperAdmin\SuperAdminAdminsComponent;
+
+
 
 use App\Http\Livewire\Employee\EmployeeDashboardComponent;
 
@@ -34,6 +41,16 @@ Route::middleware(['auth'])->group(function(){
 
 Route::middleware(['auth','authsuperadmin'])->group(function(){
     Route::get('/superadmin/dashboard',SuperAdminDashboardComponent::class)->name('superadmin.dashboard');
+    
+    Route::get('/superadmin/add/employee',SuperAdminAddEmployeeComponent::class)->name('add.employee');
+
+    Route::get('/superadmin/all-employees',SuperAdminEmployeesComponent::class)->name('all.employees');
+
+    Route::get('/superadmin/employee/edit/{user_id}',SuperAdminEditEmployeeComponent::class)->name('admin.edit.employee');
+
+    Route::get('/superadmin/fired-employees',SuperAdminFiredEmployeesComponent::class)->name('fired.employees');
+
+    Route::get('/superadmin/administrators',SuperAdminAdminsComponent::class)->name('administrators');
 });
 
 // Route::get('/dashboard', function () {

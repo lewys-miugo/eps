@@ -45,7 +45,7 @@ class UserFactory extends Factory
             'gender' => $this->faker->randomElement(['male', 'female', 'other']),
             'campus' => null, // $this->faker->word(),
             'phone_number' => $this->faker->unique()->phoneNumber(),
-            'campus_id' => $this->faker->numberBetween(1,10), // Assuming you'll later associate it with a Campus model
+            'campus_id' => $this->faker->numberBetween(1,6), // Assuming you'll later associate it with a Campus model
             'department' => null, // $this->faker->word(),
             'department_id' => null, // Assuming you'll later associate it with a Department model
             'start_date' => $this->faker->date(),
@@ -54,7 +54,7 @@ class UserFactory extends Factory
             'salary' => $salary,
             'fired' => $isFired, // 10% chance of being true
             'email' => $this->faker->unique()->safeEmail(),
-            'utype' => $isfired ? 'FEMP':'EMP',
+            'utype' => $isFired ? 'FEMP':'EMP',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // default "password"
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),

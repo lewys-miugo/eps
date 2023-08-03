@@ -23,7 +23,8 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female', 'other'])->nullable();
             $table->string('campus')->nullable();
             $table->string('phone_number')->nullable();
-            $table->bigInteger('campus_id')->unsigned()->nullable();
+            $table->string('phone_number2')->nullable();
+            $table->bigInteger('campus_id')->unsigned()->nullable(); // Make it nullable if it can be optional
             $table->string('department')->nullable();
             $table->bigInteger('department_id')->unsigned()->nullable();
             $table->date('start_date')->nullable();
@@ -37,7 +38,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade');
+            // $table->foreign('campus_id')->nulllable()->references('id')->on('campuses')->onDelete('cascade');
         });
     }
 
