@@ -15,7 +15,8 @@ class EmployeePayslipComponent extends Component
 
     public function render()
     {
-        $user = USer::where('id',$this->employee_id)->first();
+        $user=User::where('user_id',Auth::user()->id)->get();
+        // $user = USer::where('id',$this->employee_id)->first();
         return view('livewire.employee.employee-payslip-component',['user'=>$user]);
     }
 }

@@ -46,6 +46,18 @@ class Kernel extends HttpKernel
         ],
     ];
 
+    // protected function schedule(Schedule $schedule)
+    // {
+    // $schedule->command('backup:run')->daily();
+    // $schedule->command('backup:clean')->daily();
+    // }
+
+    // php artisan backup:list
+    // php artisan backup:run
+    // php artisan backup:restore --backup-name={backupName}
+
+
+
     /**
      * The application's route middleware.
      *

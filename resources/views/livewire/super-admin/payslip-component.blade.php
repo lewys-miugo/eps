@@ -20,20 +20,20 @@
                             </td>
                             <td class="border px-4 py-2 text-right">{{$user->bonus}}</td>
                         </tr>
-                @php
-                    $grossIncome = $user->salary + $user->bonus;
-                    $deductions = $user->nssf + $user->nhif;
-                    $taxablePay = $grossIncome - $deductions;
+                    @php
+                        $grossIncome = $user->salary + $user->bonus;
+                        $deductions = $user->nssf + $user->nhif;
+                        $taxablePay = $grossIncome - $deductions;
 
-                    $firstTax = 24000 * 0.10;
-                    $nextTax = min($taxablePay, 8333) * 0.25;
-                    $aboveTax = max($taxablePay - 32333, 0) * 0.30;
+                        $firstTax = 24000 * 0.10;
+                        $nextTax = min($taxablePay, 8333) * 0.25;
+                        $aboveTax = max($taxablePay - 32333, 0) * 0.30;
 
-                    $totalTax = $firstTax + $nextTax + $aboveTax;
-                    $personalRelief = 2400;
-                    $netTax = $totalTax - $personalRelief;
-                    $netincome = $grossIncome-$netTax-$deductions;
-                @endphp
+                        $totalTax = $firstTax + $nextTax + $aboveTax;
+                        $personalRelief = 2400;
+                        $netTax = $totalTax - $personalRelief;
+                        $netincome = $grossIncome-$netTax-$deductions;
+                    @endphp
 
                     <!-- Then, in your table -->
                     <tr>
@@ -74,6 +74,7 @@
                     </tr>
                 </table>
             </div>
+            <button wire:click="downloadPayslip" class="bg-blue-500 p-4">Download Payslip</button>
 
         </div>
     </div>

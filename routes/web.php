@@ -73,6 +73,8 @@ Route::middleware(['auth','authsuperadmin'])->group(function(){
     Route::get('/superadmin/campus/employees-by-campus/{slug}/{department_slug?}',EmployeeByCampusComponent::class)->name('employees.campus');
 
     Route::get('/user/{id}',PayslipComponent::class)->name('employee.payslip');
+
+    // Route::get('/employee/payslips')
 });
 
 // Route::get('/dashboard', function () {
