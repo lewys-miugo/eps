@@ -95,13 +95,27 @@
             <!-- Campus -->
             <div class="mb-4">
                 <label for="campus_id" class="block mb-1">select campus</label>
-                <select name="campus_id" id="" wire:model="campus_id">
-                    <option value="">Choose campus</option>
+                <select name="campus_id" id="" wire:model="campus_id" wire:change="changeDepartment">
+                    <option value="0">Choose Campus</option>
                     @foreach($campuses as $campus)
-                        <option value="{{$campus->id}}">{{$campus->campus_name}}</option>
+                        <option value="{{$campus->id}}">{{$campus->name}}</option>
                     @endforeach
                 </select>
                 @error('campus_id')
+                    <p class="text-white bg-red-300">{{$message}}</p>
+                @enderror
+            </div>
+
+            <!-- Department -->
+            <div class="mb-4">
+                <label for="department_id" class="block mb-1">select department</label>
+                <select name="department_id" id="" wire:model="department_id">
+                    <option value="">Choose Department</option>
+                    @foreach($departments as $department)
+                        <option value="{{$department->id}}">{{$department->department_name}}</option>
+                    @endforeach
+                </select>
+                @error('department_id')
                     <p class="text-white bg-red-300">{{$message}}</p>
                 @enderror
             </div>

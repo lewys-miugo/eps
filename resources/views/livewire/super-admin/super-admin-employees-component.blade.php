@@ -6,6 +6,18 @@
                 <p class="text-left text-xs text-[#6a767e]"><a href="/" class="uppercase">Home</a> > Customers-Users</p>
             </div>
 
+            <div class="flex flex-row space-x-4">
+
+            @foreach ($campuses as $campus)
+            <div>
+                <a href="{{route('employees.campus',['slug'=>$campus->slug])}}">
+                    {{$campus->name}}
+                </a>
+            </div>
+                
+            @endforeach
+            </div>
+
             <h1 class="text-center">All Users</h1>
                 <div class="text-right mx-8 my-2">
                     <a href="{{ route('add.employee') }}" class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded ">Add New Employee</a>
@@ -36,7 +48,9 @@
                         @foreach($users as $user)
                             <tr class="even:bg-gray-100 odd:bg-white">
                                 <td class="py-2 px-4 whitespace-nowrap text-center">{{++$i}}</td>
-                                <td class="py-2 px-4  text-center">{{$user->full_name}}</td>
+                                <td class="py-2 px-4  text-center">
+                                    <a href="{{route('employee.payslip',['id'=>$user->id])}}">{{$user->full_name}}</a>
+                                </td>
                                 <td class="py-2 px-4  text-center">{{$user->email}}</td>
                                 <td class="py-2 px-4  text-center">{{$user->utype}}</td>
                                 <td class="py-2 px-4 whitespace-nowrap text-center">

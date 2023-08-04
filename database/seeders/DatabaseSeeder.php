@@ -19,46 +19,45 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\Campus::factory(1)->create([
-            'campus_name'=>'Juja',
-            'abbreviation_name'=>'Juja-01',
+            'name'=>'Juja',
+            
             'slug'=>'Juja'
         ]);
 
         \App\Models\Campus::factory(1)->create([
-            'campus_name'=>'Mombasa',
-            'abbreviation_name'=>'mbsa-01',
+            'name'=>'Mombasa',
+            
             'slug'=>'mombasa'
         ]);
         
         // 'Nairobi', 'Mombasa', 'Kisumu', 'Nakuru', 'Eldoret', 
         //     'Thika', 'Kitale', 'Malindi', 'Garissa', 'Kakamega','Nanyuki','Juja'
         \App\Models\Campus::factory(1)->create([
-            'campus_name'=>'Nairobi',
-            'abbreviation_name'=>'NBO-01',
+            'name'=>'Nairobi',
+            
             'slug'=>'Nairobi'
         ]);
         
         \App\Models\Campus::factory(1)->create([
-            'campus_name'=>'Kisumu',
-            'abbreviation_name'=>'KSM-01',
+            'name'=>'Kisumu',
+            
             'slug'=>'kisumu'
         ]);
         
         \App\Models\Campus::factory(1)->create([
-            'campus_name'=>'Nakuru',
-            'abbreviation_name'=>'NKRU-01',
+            'name'=>'Nakuru',
+            
             'slug'=>'nakuru'
         ]);
         
         \App\Models\Campus::factory(1)->create([
-            'campus_name'=>'Eldoret',
-            'abbreviation_name'=>'ELD',
+            'name'=>'Eldoret',
             'slug'=>'eldoret'
         ]);
 
         $faker = Faker::create();
 
-        // \App\Models\User::factory(3000)->create();
+        \App\Models\User::factory(20)->create();
 
         \App\Models\User::factory(1)->create([
             'full_name' => 'Lewys Miugo',
@@ -105,6 +104,9 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ]);
+
+        // $payslip = \App\Models\Payslip::factory()->create();
+
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

@@ -5,6 +5,8 @@ namespace App\Http\Livewire\SuperAdmin;
 use Livewire\Component;
 use App\Models\User;
 use App\Models\Campus;
+use App\Models\Department;
+
 
 
 
@@ -92,6 +94,11 @@ class SuperAdminAddEmployeeComponent extends Component
         $user->email = $this->email;
         // $user->campus = $this->campus;
         $user->campus_id = $this->campus_id;
+        // $user->department_id = $this->department_id;
+        if ($this->department_id) {
+            $user->department_id=$this->department_id;
+        }
+
         $user->phone_number = $this->phone_number;
         // $user->phone_number2 = $this->phone_number2;
         // $user->department = $this->department;
@@ -109,12 +116,18 @@ class SuperAdminAddEmployeeComponent extends Component
         
     }
     
+    public function changeDepartment()
+    {
+        $this->department_id=0;
+    }
 
 
     public function render()
     {
-        $campuses=Campus::orderBy('campus_name','ASC')->get();
+        $campuses=Campus::orderBy('name','ASC')->get();
 
-        return view('livewire.super-admin.super-admin-add-employee-component',['campuses'=>$campuses]);
+        $departments = Department::where('campus_id',$this->campus_id)->get();
+
+        return view('livewire.super-admin.super-admin-add-employee-component',['campuses'=>$campuses,'departments'=>$departments]);
     }
 }
