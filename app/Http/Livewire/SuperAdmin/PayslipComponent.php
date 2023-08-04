@@ -16,7 +16,7 @@ class PayslipComponent extends Component
 
     public function render()
     {
-        $user = USer::where('id',$this->id)->first();
+        $user = USer::where('id',$this->employee_id)->first();
 
         return view('livewire.super-admin.payslip-component',['user'=>$user]);
     }

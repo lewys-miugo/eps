@@ -52,6 +52,7 @@ class UserFactory extends Factory
             'suspended' => $this->faker->boolean(20), // 20% chance of being true
             'job_grade' => $job_grade,
             'salary' => $salary,
+            'bonus' => $this->faker->numberBetween(10000, 50000),
             'fired' => $isFired, // 10% chance of being true
             'email' => $this->faker->unique()->safeEmail(),
             'utype' => $isFired ? 'FEMP':'EMP',

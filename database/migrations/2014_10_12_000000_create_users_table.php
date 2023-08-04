@@ -31,6 +31,7 @@ return new class extends Migration
             $table->boolean('suspended')->default(false)->nullable();
             $table->string('job_grade')->nullable();
             $table->decimal('salary',10,2)->nullable();
+            $table->decimal('bonus',10,2)->nullable();
             $table->boolean('fired')->default(false)->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('utype')->default('USR')->nullable();
