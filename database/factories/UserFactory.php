@@ -53,6 +53,9 @@ class UserFactory extends Factory
             'job_grade' => $job_grade,
             'salary' => $salary,
             'bonus' => $this->faker->numberBetween(10000, 50000),
+            'nhif' => $this->faker->numberBetween(500, 3000),
+            'nssf' => $this->faker->numberBetween(1000, 5000),
+
             'fired' => $isFired, // 10% chance of being true
             'email' => $this->faker->unique()->safeEmail(),
             'utype' => $isFired ? 'FEMP':'EMP',
